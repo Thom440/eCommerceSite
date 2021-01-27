@@ -3,23 +3,34 @@
     ViewData["Title"] = "Add Product";
 }
 
-<h1>Add Product</h1>
+<div class="mx-auto" style="width: 500px;">
+    <h1>Add Product</h1>
 
-<form method="post">
-    <label asp-for="Title"></label>
-    <input asp-for="Title" />
-    <span asp-validation-for="Title"></span>
-    <br />
-
-    <label asp-for="Price"></label>
-    <input asp-for="Price" />
-    <span asp-validation-for="Price"></span>
-    <br />
-
-    <label asp-for="Category"></label>
-    <input asp-for="Category" />
-    <span asp-validation-for="Category"></span>
-    <br />
-
-    <input type="submit" />
-</form>
+    <form method="post">
+        <div class="form-group row">
+            <label asp-for="Title" class="col-sm-2 col-form-label font-weight-bold"></label>
+            <div class="col-sm-10">
+                <input asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+                <br />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Price" class="col-sm-2 col-form-label font-weight-bold"></label>
+            <div class="col-sm-10">
+                <input asp-for="Price" />
+                <span asp-validation-for="Price"></span>
+            </div>
+            <br />
+        </div>
+        <div class="form-group row">
+            <label asp-for="Category" class="col-sm-2 col-form-label font-weight-bold"></label>
+            <div class="col-sm-10">
+                <input asp-for="Category" />
+                <span asp-validation-for="Category"></span>
+            </div>
+            <br />
+        </div>
+        <input type="submit" class="btn btn-dark font-weight-bold" />
+    </form>
+</div>
