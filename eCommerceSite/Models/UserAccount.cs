@@ -45,5 +45,9 @@ namespace eCommerceSite.Models
 
         [DataType(DataType.Date)] // Time is ignored
         public DateTime? DateOfBirth { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string Username { get; set; }
     }
 }
