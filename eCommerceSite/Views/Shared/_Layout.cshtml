@@ -1,4 +1,27 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.EntityFrameworkCore
+@inject IHttpContextAccessor sessionData
+@inject eCommerceSite.Data.ProductContext db
+@{ 
+    int? userID = sessionData.HttpContext.Session.GetInt32("UserID");
+    string userName = null;
+    if (userID.HasValue)
+    {
+        string userNameFromSession = sessionData.HttpContext.Session.GetString("Username");
+        if (userNameFromSession == null)
+        {
+            userName = await (from u in db.UserAccounts
+                              where u.UserID == userID
+                              select u.Username).SingleOrDefaultAsync();
+            sessionData.HttpContext.Session.SetString("Username", userName);
+        }
+        else
+        {
+            userName = userNameFromSession;
+        }
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,9 +50,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Product Catalog</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="User" asp-action="Register">Create an account</a>
-                        </li>
+                        @if (userID == null) // If user is not logged in
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="User" asp-action="Register">Create an account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="User" asp-action="Login">Log In</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark disabled">Welcome @userName</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
