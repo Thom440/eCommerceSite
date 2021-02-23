@@ -67,6 +67,9 @@ namespace eCommerceSite.Controllers
                 _context.UserAccounts.Add(acc);
                 await _context.SaveChangesAsync();
 
+                // Automatically log user in after registration
+                LogUserIn(acc.UserID);
+
                 // Redirect to homepage
                 return RedirectToAction("Index", "Home");
             }
@@ -109,9 +112,14 @@ namespace eCommerceSite.Controllers
             }
 
             // Log user into website
-            HttpContext.Session.SetInt32("UserID", account.UserID);
+            LogUserIn(account.UserID);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        private void LogUserIn(int accountId)
+        {
+            HttpContext.Session.SetInt32("UserID", accountId);
         }
 
         public IActionResult Logout()
