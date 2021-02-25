@@ -48,5 +48,13 @@ namespace eCommerceSite.Data
             await _context.SaveChangesAsync();
             return p;
         }
+
+        public static async Task<Product> GetProductAsync(ProductContext context, int id)
+        {
+            Product p = await (from products in context.Products
+                               where products.ProductID == id
+                               select products).SingleAsync();
+            return p;
+        }
     }
 }
