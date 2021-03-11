@@ -49,6 +49,9 @@ namespace eCommerceSite.Data
             return p;
         }
 
+        /// <summary>
+        /// Grabs a single product from the database
+        /// </summary>
         public static async Task<Product> GetProductAsync(ProductContext context, int id)
         {
             Product p = await (from products in context.Products

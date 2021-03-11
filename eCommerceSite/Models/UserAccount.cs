@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace eCommerceSite.Models
 {
+    /// <summary>
+    /// Represents a single user account
+    /// </summary>
     public class UserAccount
     {
         [Key]
         public int UserID { get; set; }
 
+        /// <summary>
+        /// The users Email Address
+        /// </summary>
         public string Email { get; set; }
 
+        /// <summary>
+        /// The username that the user picks
+        /// </summary>
         public string Username { get; set; }
 
         public string Password { get; set; }

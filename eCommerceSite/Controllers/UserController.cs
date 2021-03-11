@@ -19,6 +19,10 @@ namespace eCommerceSite.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Displays a view to allow a user to register an
+        /// account on the website
+        /// </summary>
         public IActionResult Register()
         {
             return View();
@@ -76,6 +80,9 @@ namespace eCommerceSite.Controllers
             return View(reg);
         }
 
+        /// <summary>
+        /// Displays a view to allow a user to login
+        /// </summary>
         public IActionResult Login()
         {
             // Check if user is already logged in

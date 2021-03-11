@@ -40,6 +40,10 @@ namespace eCommerceSite.Controllers
             return View(products);
         }
 
+        /// <summary>
+        /// Displays a view that allows you to add a product to the database
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Add()
         {
@@ -62,6 +66,9 @@ namespace eCommerceSite.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Displays a view to edit a product in the database
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -86,6 +93,9 @@ namespace eCommerceSite.Controllers
             return View(p);
         }
 
+        /// <summary>
+        /// Displays a view to delete a product in the database
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
