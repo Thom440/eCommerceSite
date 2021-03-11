@@ -38,6 +38,9 @@ namespace eCommerceSite.Controllers
             return Redirect(previousUrl);
         }
 
+        /// <summary>
+        /// Displays a view to show all products in the shopping cart
+        /// </summary>
         public IActionResult Summary()
         {
             List<Product> cartProducts = CookieHelper.GetCartProducts(_httpContext);

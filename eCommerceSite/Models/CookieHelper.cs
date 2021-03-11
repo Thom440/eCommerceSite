@@ -32,6 +32,10 @@ namespace eCommerceSite.Models
             return cartProducts;
         }
 
+        /// <summary>
+        /// Adds a product to the cart and creates a cookie if one does not
+        /// exist. If a cookie already exists then it will be updated.
+        /// </summary>
         public static void AddProductToCart(IHttpContextAccessor http, Product p)
         {
             List<Product> cartProducts = GetCartProducts(http);
@@ -49,6 +53,9 @@ namespace eCommerceSite.Models
             http.HttpContext.Response.Cookies.Append(CartCookie, data, options);
         }
 
+        /// <summary>
+        /// Gets the count of all the products in the shopping cart
+        /// </summary>
         public static int GetTotalCartProducts(IHttpContextAccessor http)
         {
             List<Product> cartProducts = GetCartProducts(http);
